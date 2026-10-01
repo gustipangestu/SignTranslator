@@ -126,7 +126,8 @@ class CameraModel: ViewModel() {
             detectedHands.forEachIndexed { index, hand ->
                 val handArray = hand.landmarks.map { (x, y, z) -> listOf(x, y, z) }
                 val scorePercent = String.format(Locale.US, "%.1f%%", hand.score * 100)
-                Log.d("HandKeypoints", "Tangan ${index + 1} [${hand.label}] (Akurasi: $scorePercent): $handArray")
+//                Log.d("HandKeypoints", "Tangan ${index + 1} [${hand.label}] (Akurasi: $scorePercent): $handArray")
+                HandRules(hand, index).eksekusi()
             }
 
             viewModelScope.launch {
